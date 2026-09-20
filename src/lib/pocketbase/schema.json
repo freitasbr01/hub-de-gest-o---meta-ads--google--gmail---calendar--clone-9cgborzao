@@ -1,0 +1,1204 @@
+{
+  "generatedAt": "2026-09-20T19:55:15.541Z",
+  "collections": [
+    {
+      "name": "users",
+      "type": "auth",
+      "apiRules": {
+        "list": "id = @request.auth.id",
+        "view": "id = @request.auth.id",
+        "create": "",
+        "update": "id = @request.auth.id",
+        "delete": "id = @request.auth.id"
+      },
+      "fields": [
+        {
+          "name": "name",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "avatar",
+          "type": "file",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate"
+          ]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
+        }
+      ],
+      "indexes": [
+        "CREATE UNIQUE INDEX `idx_tokenKey__pb_users_auth_` ON `users` (`tokenKey`)",
+        "CREATE UNIQUE INDEX `idx_email__pb_users_auth_` ON `users` (`email`) WHERE `email` != ''"
+      ]
+    },
+    {
+      "name": "ad_accounts",
+      "type": "base",
+      "apiRules": {
+        "list": "@request.auth.id != '' && user_id = @request.auth.id",
+        "view": "@request.auth.id != '' && user_id = @request.auth.id",
+        "create": "@request.auth.id != '' && user_id = @request.auth.id",
+        "update": "@request.auth.id != '' && user_id = @request.auth.id",
+        "delete": "@request.auth.id != '' && user_id = @request.auth.id"
+      },
+      "fields": [
+        {
+          "name": "account_id",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "currency",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "status",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "active",
+            "inactive"
+          ]
+        },
+        {
+          "name": "user_id",
+          "type": "relation",
+          "required": true,
+          "system": false,
+          "collectionRef": "users"
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate"
+          ]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
+        }
+      ],
+      "indexes": []
+    },
+    {
+      "name": "campaigns",
+      "type": "base",
+      "apiRules": {
+        "list": "@request.auth.id != '' && account_id.user_id = @request.auth.id",
+        "view": "@request.auth.id != '' && account_id.user_id = @request.auth.id",
+        "create": null,
+        "update": null,
+        "delete": null
+      },
+      "fields": [
+        {
+          "name": "name",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "status",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "active",
+            "paused",
+            "draft"
+          ]
+        },
+        {
+          "name": "spend",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "impressions",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "conversions",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "roas",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "account_id",
+          "type": "relation",
+          "required": true,
+          "system": false,
+          "collectionRef": "ad_accounts"
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate"
+          ]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
+        },
+        {
+          "name": "objective",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "awareness",
+            "traffic",
+            "engagement",
+            "leads",
+            "sales",
+            "app_promotion"
+          ]
+        },
+        {
+          "name": "buying_type",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "auction",
+            "reserved"
+          ]
+        },
+        {
+          "name": "budget_type",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "daily",
+            "lifetime"
+          ]
+        },
+        {
+          "name": "budget",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "reach",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "frequency",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "clicks",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "ctr",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "cpc",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "cpm",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "cost_per_conversion",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "purchase_roas",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "actions",
+          "type": "json",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "meta_id",
+          "type": "text",
+          "required": false,
+          "system": false
+        }
+      ],
+      "indexes": []
+    },
+    {
+      "name": "daily_metrics",
+      "type": "base",
+      "apiRules": {
+        "list": "@request.auth.id != '' && campaign_id.account_id.user_id = @request.auth.id",
+        "view": "@request.auth.id != '' && campaign_id.account_id.user_id = @request.auth.id",
+        "create": null,
+        "update": null,
+        "delete": null
+      },
+      "fields": [
+        {
+          "name": "date",
+          "type": "date",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "spend",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "conversions",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "ctr",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "campaign_id",
+          "type": "relation",
+          "required": true,
+          "system": false,
+          "collectionRef": "campaigns"
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate"
+          ]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
+        },
+        {
+          "name": "level",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "account",
+            "campaign",
+            "adset",
+            "ad"
+          ]
+        },
+        {
+          "name": "level_id",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "impressions",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "reach",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "clicks",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "cpc",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "cpm",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "purchase_roas",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "cost_per_conversion",
+          "type": "number",
+          "required": false,
+          "system": false
+        }
+      ],
+      "indexes": []
+    },
+    {
+      "name": "ad_sets",
+      "type": "base",
+      "apiRules": {
+        "list": "@request.auth.id != '' && campaign_id.account_id.user_id = @request.auth.id",
+        "view": "@request.auth.id != '' && campaign_id.account_id.user_id = @request.auth.id",
+        "create": null,
+        "update": null,
+        "delete": null
+      },
+      "fields": [
+        {
+          "name": "name",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "status",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "active",
+            "paused",
+            "deleted"
+          ]
+        },
+        {
+          "name": "campaign_id",
+          "type": "relation",
+          "required": true,
+          "system": false,
+          "collectionRef": "campaigns"
+        },
+        {
+          "name": "daily_budget",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "lifetime_budget",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "optimization_goal",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "reach",
+            "link_clicks",
+            "conversions",
+            "app_installs",
+            "video_views"
+          ]
+        },
+        {
+          "name": "billing_event",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "impressions",
+            "link_clicks",
+            "app_installs"
+          ]
+        },
+        {
+          "name": "bid_strategy",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "lowest_cost",
+            "cost_cap",
+            "bid_cap"
+          ]
+        },
+        {
+          "name": "targeting_age_min",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "targeting_age_max",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "targeting_genders",
+          "type": "json",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "targeting_locations",
+          "type": "json",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "targeting_interests",
+          "type": "json",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "spend",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "impressions",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "reach",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "frequency",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "clicks",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "ctr",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "cpc",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "cpm",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "conversions",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "cost_per_conversion",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "purchase_roas",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate"
+          ]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
+        },
+        {
+          "name": "meta_id",
+          "type": "text",
+          "required": false,
+          "system": false
+        }
+      ],
+      "indexes": []
+    },
+    {
+      "name": "ads",
+      "type": "base",
+      "apiRules": {
+        "list": "@request.auth.id != '' && adset_id.campaign_id.account_id.user_id = @request.auth.id",
+        "view": "@request.auth.id != '' && adset_id.campaign_id.account_id.user_id = @request.auth.id",
+        "create": null,
+        "update": null,
+        "delete": null
+      },
+      "fields": [
+        {
+          "name": "name",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "status",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "active",
+            "paused",
+            "deleted"
+          ]
+        },
+        {
+          "name": "adset_id",
+          "type": "relation",
+          "required": true,
+          "system": false,
+          "collectionRef": "ad_sets"
+        },
+        {
+          "name": "creative_type",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "image",
+            "video",
+            "carousel",
+            "collection"
+          ]
+        },
+        {
+          "name": "creative_url",
+          "type": "url",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "headline",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "body_text",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "call_to_action",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "learn_more",
+            "shop_now",
+            "sign_up",
+            "contact_us",
+            "download",
+            "book_now"
+          ]
+        },
+        {
+          "name": "link_url",
+          "type": "url",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "spend",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "impressions",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "reach",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "frequency",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "clicks",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "ctr",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "cpc",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "cpm",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "conversions",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "cost_per_conversion",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "purchase_roas",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "quality_ranking",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "above_average",
+            "average",
+            "below_average"
+          ]
+        },
+        {
+          "name": "engagement_rate_ranking",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "above_average",
+            "average",
+            "below_average"
+          ]
+        },
+        {
+          "name": "conversion_rate_ranking",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "above_average",
+            "average",
+            "below_average"
+          ]
+        },
+        {
+          "name": "video_views",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "video_play_rate",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "likes",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "comments",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "shares",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate"
+          ]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
+        },
+        {
+          "name": "meta_id",
+          "type": "text",
+          "required": false,
+          "system": false
+        }
+      ],
+      "indexes": []
+    },
+    {
+      "name": "meta_connections",
+      "type": "base",
+      "apiRules": {
+        "list": "@request.auth.id != '' && user_id = @request.auth.id",
+        "view": "@request.auth.id != '' && user_id = @request.auth.id",
+        "create": null,
+        "update": null,
+        "delete": "@request.auth.id != '' && user_id = @request.auth.id"
+      },
+      "fields": [
+        {
+          "name": "user_id",
+          "type": "relation",
+          "required": true,
+          "system": false,
+          "collectionRef": "users"
+        },
+        {
+          "name": "account_id",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "account_name",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "currency",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "status",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "connected",
+            "disconnected",
+            "error"
+          ]
+        },
+        {
+          "name": "last_sync",
+          "type": "date",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate"
+          ]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
+        }
+      ],
+      "indexes": []
+    },
+    {
+      "name": "google_connections",
+      "type": "base",
+      "apiRules": {
+        "list": "@request.auth.id != '' && user_id = @request.auth.id",
+        "view": "@request.auth.id != '' && user_id = @request.auth.id",
+        "create": null,
+        "update": null,
+        "delete": null
+      },
+      "fields": [
+        {
+          "name": "user_id",
+          "type": "relation",
+          "required": true,
+          "system": false,
+          "collectionRef": "users"
+        },
+        {
+          "name": "token_expiry",
+          "type": "date",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "email",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "scope",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "status",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": [
+            "connected",
+            "disconnected",
+            "error"
+          ]
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate"
+          ]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
+        }
+      ],
+      "indexes": []
+    },
+    {
+      "name": "calendar_events",
+      "type": "base",
+      "apiRules": {
+        "list": "@request.auth.id != '' && user_id = @request.auth.id",
+        "view": "@request.auth.id != '' && user_id = @request.auth.id",
+        "create": null,
+        "update": null,
+        "delete": null
+      },
+      "fields": [
+        {
+          "name": "user_id",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "event_id",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "start_time",
+          "type": "date",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "end_time",
+          "type": "date",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "location",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "attendees",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate"
+          ]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
+        },
+        {
+          "name": "when_local",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "html_link",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "meet_link",
+          "type": "text",
+          "required": false,
+          "system": false
+        }
+      ],
+      "indexes": []
+    },
+    {
+      "name": "gmail_messages",
+      "type": "base",
+      "apiRules": {
+        "list": "@request.auth.id != '' && user_id = @request.auth.id",
+        "view": "@request.auth.id != '' && user_id = @request.auth.id",
+        "create": null,
+        "update": null,
+        "delete": null
+      },
+      "fields": [
+        {
+          "name": "user_id",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "message_id",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "from_email",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "subject",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "snippet",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "is_unread",
+          "type": "bool",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "needs_reply",
+          "type": "bool",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate"
+          ]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
+        }
+      ],
+      "indexes": []
+    }
+  ]
+}
