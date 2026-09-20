@@ -29,19 +29,14 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate"
-          ]
+          "autodateTriggers": ["onCreate"]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate",
-            "onUpdate"
-          ]
+          "autodateTriggers": ["onCreate", "onUpdate"]
         }
       ],
       "indexes": [
@@ -83,10 +78,7 @@
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "active",
-            "inactive"
-          ]
+          "selectValues": ["active", "inactive"]
         },
         {
           "name": "user_id",
@@ -100,19 +92,14 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate"
-          ]
+          "autodateTriggers": ["onCreate"]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate",
-            "onUpdate"
-          ]
+          "autodateTriggers": ["onCreate", "onUpdate"]
         }
       ],
       "indexes": []
@@ -139,11 +126,7 @@
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "active",
-            "paused",
-            "draft"
-          ]
+          "selectValues": ["active", "paused", "draft"]
         },
         {
           "name": "spend",
@@ -181,53 +164,35 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate"
-          ]
+          "autodateTriggers": ["onCreate"]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate",
-            "onUpdate"
-          ]
+          "autodateTriggers": ["onCreate", "onUpdate"]
         },
         {
           "name": "objective",
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "awareness",
-            "traffic",
-            "engagement",
-            "leads",
-            "sales",
-            "app_promotion"
-          ]
+          "selectValues": ["awareness", "traffic", "engagement", "leads", "sales", "app_promotion"]
         },
         {
           "name": "buying_type",
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "auction",
-            "reserved"
-          ]
+          "selectValues": ["auction", "reserved"]
         },
         {
           "name": "budget_type",
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "daily",
-            "lifetime"
-          ]
+          "selectValues": ["daily", "lifetime"]
         },
         {
           "name": "budget",
@@ -345,31 +310,21 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate"
-          ]
+          "autodateTriggers": ["onCreate"]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate",
-            "onUpdate"
-          ]
+          "autodateTriggers": ["onCreate", "onUpdate"]
         },
         {
           "name": "level",
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "account",
-            "campaign",
-            "adset",
-            "ad"
-          ]
+          "selectValues": ["account", "campaign", "adset", "ad"]
         },
         {
           "name": "level_id",
@@ -444,11 +399,7 @@
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "active",
-            "paused",
-            "deleted"
-          ]
+          "selectValues": ["active", "paused", "deleted"]
         },
         {
           "name": "campaign_id",
@@ -474,35 +425,21 @@
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "reach",
-            "link_clicks",
-            "conversions",
-            "app_installs",
-            "video_views"
-          ]
+          "selectValues": ["reach", "link_clicks", "conversions", "app_installs", "video_views"]
         },
         {
           "name": "billing_event",
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "impressions",
-            "link_clicks",
-            "app_installs"
-          ]
+          "selectValues": ["impressions", "link_clicks", "app_installs"]
         },
         {
           "name": "bid_strategy",
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "lowest_cost",
-            "cost_cap",
-            "bid_cap"
-          ]
+          "selectValues": ["lowest_cost", "cost_cap", "bid_cap"]
         },
         {
           "name": "targeting_age_min",
@@ -605,19 +542,14 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate"
-          ]
+          "autodateTriggers": ["onCreate"]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate",
-            "onUpdate"
-          ]
+          "autodateTriggers": ["onCreate", "onUpdate"]
         },
         {
           "name": "meta_id",
@@ -650,11 +582,7 @@
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "active",
-            "paused",
-            "deleted"
-          ]
+          "selectValues": ["active", "paused", "deleted"]
         },
         {
           "name": "adset_id",
@@ -668,12 +596,7 @@
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "image",
-            "video",
-            "carousel",
-            "collection"
-          ]
+          "selectValues": ["image", "video", "carousel", "collection"]
         },
         {
           "name": "creative_url",
@@ -784,33 +707,21 @@
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "above_average",
-            "average",
-            "below_average"
-          ]
+          "selectValues": ["above_average", "average", "below_average"]
         },
         {
           "name": "engagement_rate_ranking",
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "above_average",
-            "average",
-            "below_average"
-          ]
+          "selectValues": ["above_average", "average", "below_average"]
         },
         {
           "name": "conversion_rate_ranking",
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "above_average",
-            "average",
-            "below_average"
-          ]
+          "selectValues": ["above_average", "average", "below_average"]
         },
         {
           "name": "video_views",
@@ -847,19 +758,14 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate"
-          ]
+          "autodateTriggers": ["onCreate"]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate",
-            "onUpdate"
-          ]
+          "autodateTriggers": ["onCreate", "onUpdate"]
         },
         {
           "name": "meta_id",
@@ -911,11 +817,7 @@
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "connected",
-            "disconnected",
-            "error"
-          ]
+          "selectValues": ["connected", "disconnected", "error"]
         },
         {
           "name": "last_sync",
@@ -928,19 +830,14 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate"
-          ]
+          "autodateTriggers": ["onCreate"]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate",
-            "onUpdate"
-          ]
+          "autodateTriggers": ["onCreate", "onUpdate"]
         }
       ],
       "indexes": []
@@ -986,30 +883,21 @@
           "type": "select",
           "required": false,
           "system": false,
-          "selectValues": [
-            "connected",
-            "disconnected",
-            "error"
-          ]
+          "selectValues": ["connected", "disconnected", "error"]
         },
         {
           "name": "created",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate"
-          ]
+          "autodateTriggers": ["onCreate"]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate",
-            "onUpdate"
-          ]
+          "autodateTriggers": ["onCreate", "onUpdate"]
         }
       ],
       "indexes": []
@@ -1084,19 +972,14 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate"
-          ]
+          "autodateTriggers": ["onCreate"]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate",
-            "onUpdate"
-          ]
+          "autodateTriggers": ["onCreate", "onUpdate"]
         },
         {
           "name": "when_local",
@@ -1183,19 +1066,14 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate"
-          ]
+          "autodateTriggers": ["onCreate"]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": [
-            "onCreate",
-            "onUpdate"
-          ]
+          "autodateTriggers": ["onCreate", "onUpdate"]
         }
       ],
       "indexes": []
